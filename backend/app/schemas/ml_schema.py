@@ -35,3 +35,18 @@ class PredictDurationResponse(BaseModel):
     predicted_duration_minutes: float
     model_version: str
     confidence_note: str
+
+class DetectedAnomaly(BaseModel):
+    id: int
+    vehicle_id: str
+    charger_id: str
+    charger_type: str
+    energy_kwh: float
+    duration_minutes: float
+    anomaly_score: float
+
+
+class AnomalyDetectionResponse(BaseModel):
+    model_version: str
+    scored: int
+    anomalies: list[DetectedAnomaly]
