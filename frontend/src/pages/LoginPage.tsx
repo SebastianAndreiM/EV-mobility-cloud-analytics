@@ -26,21 +26,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="auth-page">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit} aria-label="login-form">
-        <label htmlFor="email">Email</label>
-        <input id="email" type="email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required />
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" value={password}
-          onChange={(e) => setPassword(e.target.value)} required />
-        <ErrorMessage message={error} />
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing in..." : "Login"}
-        </button>
-      </form>
-      <p>No account? <Link to="/register">Register</Link></p>
+    <div className="auth-shell">
+      <div className="auth-page">
+        <p className="eyebrow">EV Mobility Cloud</p>
+        <h1>Welcome back</h1>
+        <p>Login and continue the demo from the dashboard.</p>
+        <form onSubmit={handleSubmit} aria-label="login-form">
+          <label htmlFor="email">Email</label>
+          <input id="email" type="email" value={email}
+            onChange={(e) => setEmail(e.target.value)} required />
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" value={password}
+            onChange={(e) => setPassword(e.target.value)} required />
+          <ErrorMessage message={error} />
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing in..." : "Login"}
+          </button>
+        </form>
+        <p>No account? <Link to="/register">Register</Link></p>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,17 @@
-export default function StatCard({ label, value }: { label: string; value: string | number }) {
+export default function StatCard({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string | number;
+  hint?: string;
+}) {
   return (
     <div className="stat-card" role="group" aria-label={label}>
       <div className="stat-label">{label}</div>
       <div className="stat-value">{value}</div>
+      {hint && <div className="stat-hint">{hint}</div>}
     </div>
   );
 }

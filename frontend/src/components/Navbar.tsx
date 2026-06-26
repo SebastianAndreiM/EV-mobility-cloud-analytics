@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Navbar() {
@@ -10,14 +10,17 @@ export default function Navbar() {
   };
   return (
     <nav className="navbar">
-      <span className="navbar-brand">⚡ EV Analytics</span>
+      <div className="navbar-brand">
+        <span>⚡ EV Analytics</span>
+        <small>cloud + ML demo</small>
+      </div>
       <div className="navbar-links">
-        <Link to="/">Dashboard</Link>
-        <Link to="/sessions">Sessions</Link>
-        <Link to="/analytics">Analytics</Link>
-        <Link to="/ml">ML Training</Link>
-        <Link to="/predict">Predict</Link>
-        <Link to="/jobs">Jobs</Link>
+        <NavLink to="/" end>Dashboard</NavLink>
+        <NavLink to="/sessions">Sessions</NavLink>
+        <NavLink to="/analytics">Analytics</NavLink>
+        <NavLink to="/ml">ML Training</NavLink>
+        <NavLink to="/predict">Predict</NavLink>
+        <NavLink to="/jobs">Jobs</NavLink>
       </div>
       <div className="navbar-user">
         <span>{user?.email}</span>

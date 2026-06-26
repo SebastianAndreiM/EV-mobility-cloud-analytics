@@ -47,40 +47,68 @@ export default function PredictionPage() {
     setForm({ ...form, [k]: Number(e.target.value) });
 
   return (
-    <div>
-      <h1>Predict Charging Duration</h1>
-      <form onSubmit={handleSubmit} aria-label="predict-form">
-        <label htmlFor="charger_type">Charger type</label>
-        <select id="charger_type" value={form.charger_type}
-          onChange={(e) => setForm({ ...form, charger_type: e.target.value })}>
-          <option value="slow">slow</option>
-          <option value="fast">fast</option>
-          <option value="ultra_fast">ultra_fast</option>
-        </select>
-        <label htmlFor="start">Start battery %</label>
-        <input id="start" type="number" value={form.start_battery_percent} onChange={num("start_battery_percent")} />
-        <label htmlFor="end">End battery %</label>
-        <input id="end" type="number" value={form.end_battery_percent} onChange={num("end_battery_percent")} />
-        <label htmlFor="cap">Battery capacity kWh</label>
-        <input id="cap" type="number" value={form.battery_capacity_kwh} onChange={num("battery_capacity_kwh")} />
-        <label htmlFor="power">Charging power kW</label>
-        <input id="power" type="number" value={form.charging_power_kw} onChange={num("charging_power_kw")} />
-        <label htmlFor="temp">Temperature °C</label>
-        <input id="temp" type="number" value={form.temperature_c} onChange={num("temperature_c")} />
-        <label htmlFor="volt">Avg voltage</label>
-        <input id="volt" type="number" value={form.average_voltage} onChange={num("average_voltage")} />
-        <label htmlFor="curr">Avg current</label>
-        <input id="curr" type="number" value={form.average_current} onChange={num("average_current")} />
-        <ErrorMessage message={error} />
-        <button type="submit">Predict</button>
-      </form>
-      {result && (
-        <div className="result" role="status">
-          <h2>{result.predicted_duration_minutes} minutes</h2>
-          <p>Model: {result.model_version}</p>
-          <p>{result.confidence_note}</p>
-        </div>
-      )}
+    <div className="page">
+      <section className="page-hero">
+        <p className="eyebrow">Model serving</p>
+        <h1>Predict Charging Duration</h1>
+        <p className="hero-copy">
+          Protected prediction endpoint with request logging and rate limiting.
+        </p>
+      </section>
+      <section className="card">
+        <form className="prediction-form" onSubmit={handleSubmit} aria-label="predict-form">
+          <div>
+            <label htmlFor="charger_type">Charger type</label>
+            <select id="charger_type" value={form.charger_type}
+              onChange={(e) => setForm({ ...form, charger_type: e.target.value })}>
+              <option value="slow">slow</option>
+              <option value="fast">fast</option>
+              <option value="ultra_fast">ultra_fast</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="start">Start battery %</label>
+            <input id="start" type="number" value={form.start_battery_percent} onChange={num("start_battery_percent")} />
+          </div>
+          <div>
+            <label htmlFor="end">End battery %</label>
+            <input id="end" type="number" value={form.end_battery_percent} onChange={num("end_battery_percent")} />
+          </div>
+          <div>
+            <label htmlFor="cap">Battery capacity kWh</label>
+            <input id="cap" type="number" value={form.battery_capacity_kwh} onChange={num("battery_capacity_kwh")} />
+          </div>
+          <div>
+            <label htmlFor="power">Charging power kW</label>
+            <input id="power" type="number" value={form.charging_power_kw} onChange={num("charging_power_kw")} />
+          </div>
+          <div>
+            <label htmlFor="temp">Temperature °C</label>
+            <input id="temp" type="number" value={form.temperature_c} onChange={num("temperature_c")} />
+          </div>
+          <div>
+            <label htmlFor="volt">Avg voltage</label>
+            <input id="volt" type="number" value={form.average_voltage} onChange={num("average_voltage")} />
+          </div>
+          <div>
+            <label htmlFor="curr">Avg current</label>
+            <input id="curr" type="number" value={form.average_current} onChange={num("average_current")} />
+          </div>
+          <div className="full-row">
+            <ErrorMessage message={error} />
+          </div>
+          <div className="full-row">
+            <button type="submit">Predict</button>
+          </div>
+        </form>
+        {result && (
+          <div className="result" role="status">
+            <h2>{result.predicted_duration_minutes} minutes</h2>
+            <p>Model: {result.model_version}</p>
+            <p>{result.confidence_note}</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

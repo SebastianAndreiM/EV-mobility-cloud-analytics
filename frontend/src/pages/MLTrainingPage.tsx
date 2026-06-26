@@ -14,14 +14,28 @@ export default function MLTrainingPage() {
   };
 
   return (
-    <div>
-      <h1>ML Training</h1>
-      <div className="toolbar">
-        <button onClick={handleTrainDuration}>Train Duration Model</button>
-        <button onClick={handleTrainAnomaly}>Train Anomaly Model</button>
-      </div>
-      {message && <p className="info">{message}</p>}
-      <p>Track progress on the Jobs page.</p>
+    <div className="page">
+      <section className="page-hero">
+        <p className="eyebrow">Async machine learning</p>
+        <h1>ML Training</h1>
+        <p className="hero-copy">
+          Queue duration prediction and anomaly detection training jobs. The worker saves trained artifacts for prediction.
+        </p>
+      </section>
+      <section className="card">
+        <div className="card-header">
+          <div>
+            <h2>Train models</h2>
+            <p>Run this after generating sessions.</p>
+          </div>
+        </div>
+        <div className="toolbar">
+          <button onClick={handleTrainDuration}>Train Duration Model</button>
+          <button onClick={handleTrainAnomaly}>Train Anomaly Model</button>
+        </div>
+        {message && <p className="info">{message}</p>}
+        <p>Track progress on the Jobs page.</p>
+      </section>
     </div>
   );
 }

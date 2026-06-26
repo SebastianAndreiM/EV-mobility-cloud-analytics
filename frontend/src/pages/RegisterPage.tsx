@@ -27,23 +27,27 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="auth-page">
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit} aria-label="register-form">
-        <label htmlFor="fullName">Full name</label>
-        <input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-        <label htmlFor="email">Email</label>
-        <input id="email" type="email" value={email}
-          onChange={(e) => setEmail(e.target.value)} required />
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" value={password}
-          onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-        <ErrorMessage message={error} />
-        <button type="submit" disabled={loading}>
-          {loading ? "Creating..." : "Register"}
-        </button>
-      </form>
-      <p>Have an account? <Link to="/login">Login</Link></p>
+    <div className="auth-shell">
+      <div className="auth-page">
+        <p className="eyebrow">Create demo user</p>
+        <h1>Register</h1>
+        <p>Create an account and access the protected analytics dashboard.</p>
+        <form onSubmit={handleSubmit} aria-label="register-form">
+          <label htmlFor="fullName">Full name</label>
+          <input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+          <label htmlFor="email">Email</label>
+          <input id="email" type="email" value={email}
+            onChange={(e) => setEmail(e.target.value)} required />
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" value={password}
+            onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+          <ErrorMessage message={error} />
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating..." : "Register"}
+          </button>
+        </form>
+        <p>Have an account? <Link to="/login">Login</Link></p>
+      </div>
     </div>
   );
 }

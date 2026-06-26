@@ -2,7 +2,7 @@
 services. Proves the repository layer is independently testable."""
 import pytest
 
-from app.models.user import User
+from app.models.user import Account
 from app.patterns.data_generator_factory import DataGeneratorFactory
 from app.repositories.charging_repository import ChargingRepository
 from app.repositories.job_repository import JobRepository
@@ -12,7 +12,7 @@ from app.models.job import Job
 
 async def test_user_repo_add_and_get_by_email(db_session):
     repo = UserRepository(db_session)
-    await repo.add(User(email="x@y.com", hashed_password="h"))
+    await repo.add(Account(email="x@y.com"))
     await db_session.commit()
     found = await repo.get_by_email("x@y.com")
     assert found is not None and found.email == "x@y.com"
