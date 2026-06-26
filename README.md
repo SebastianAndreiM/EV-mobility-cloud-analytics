@@ -262,25 +262,6 @@ Tests cover business-level flows like:
 
 ---
 
-## Why this project fits the role
-
-This project is close to the kind of work used in cloud analytics for e-mobility:
-
-- EV charging data ingestion
-- SQL storage and querying
-- analytics dashboards
-- ML prediction
-- anomaly detection
-- async processing through a queue
-- API security
-- rate limiting
-- logging and observability
-- Docker-based service composition
-
-It connects data science with backend/cloud engineering, which is exactly the reason I chose this project instead of making only a notebook.
-
----
-
 ## What I would improve next
 
 If I had more time, I would add:
@@ -295,7 +276,3 @@ If I had more time, I would add:
 - downloadable CSV reports
 
 ---
-
-## CV bullet
-
-Built a full-stack EV Mobility Cloud Analytics platform using FastAPI, PostgreSQL, React, Docker, Redis, RabbitMQ and Celery, with JWT authentication, rate limiting, structured logging, synthetic EV charging data generation, asynchronous ML training, charging duration prediction, anomaly detection and analytics dashboards.
